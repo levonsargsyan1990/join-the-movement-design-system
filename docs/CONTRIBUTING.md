@@ -12,23 +12,31 @@ Thanks for helping evolve the **Join the Movement** design system.
    `DESIGN_SYSTEM_AUDIT.md`.
 3. **Framework-agnostic.** Ship CSS + tokens, not framework components.
 4. **Every component gets a story.** If you add or change a component, update its
-   story under `stories/`.
+   story in the **[creavue-storybook](https://github.com/levonsargsyan1990/creavue-storybook)** repo.
 5. **Accessibility is non-negotiable.** Respect `prefers-reduced-motion`, keep
-   focus states, and check the a11y addon panel.
+   focus states, and check the a11y addon panel (in the Storybook repo).
 
 ## Local development
 
+This is a zero-dependency, build-free CSS package — there's nothing to compile.
+Edit the files under `src/` directly.
+
+To preview changes visually, use the Storybook repo:
+
 ```bash
-npm install
-npm run storybook        # http://localhost:6006
-npm run build-storybook  # static build into ./storybook-static
+# in a clone of creavue-storybook
+npm install                  # pulls this package as a git dependency
+npm run storybook            # http://localhost:6006
 ```
+
+While iterating, point that repo's `join-the-movement-design-system` dependency at
+your local checkout (e.g. `npm link` or a `file:` path) so edits show up live.
 
 ## Adding a component
 
 1. Create `src/components/<name>.css`, consuming tokens.
 2. Add an `@import` for it in `src/styles/index.css`.
-3. Add `stories/components/<Name>.stories.js`.
+3. Add a story under `stories/components/` in the **creavue-storybook** repo.
 4. Add a row to the component inventory in `DESIGN_SYSTEM_AUDIT.md`.
 
 ## Commit convention

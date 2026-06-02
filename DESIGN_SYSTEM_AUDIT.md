@@ -205,7 +205,16 @@ Breakpoints: `760px` (tablet — grids go multi-column, content widens) and
 
 ## 6. Verification
 
-- `npm install` → installs Storybook 8 (html-vite) toolchain.
-- `npm run build-storybook` → builds the static reference (verified passing).
-  Fonts resolve via the CSS `@import`/`url()` graph; the logo asset is served from
-  `src/assets` via Storybook `staticDirs`.
+This package is intentionally **zero-dependency and build-free** — it ships raw
+CSS, tokens, and fonts. Verification happens in the Storybook repo that consumes
+it:
+
+- **[creavue-storybook](https://github.com/levonsargsyan1990/creavue-storybook)**
+  installs this package as a Git dependency and runs `npm run build-storybook`
+  (verified passing). Fonts resolve via the CSS `@import`/`url()` graph when
+  bundled; the logo asset is served from this package's `src/assets` via
+  Storybook `staticDirs`.
+- Import surface: the bare specifier `join-the-movement-design-system` and the
+  explicit `…/src/styles/index.css` both resolve to the bundle via the package
+  `exports` map; `tokens.css` / `tokens.json` / `tokens.js` are exported as
+  named subpaths.

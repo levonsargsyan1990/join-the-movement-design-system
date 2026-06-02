@@ -1,8 +1,12 @@
 # Join the Movement — Design System
 
-A framework-agnostic design system extracted from the Creavue **“Join the Movement”** marketing website. It packages the brand’s **design tokens**, **CSS components**, and **self-hosted fonts** into an independent, reusable library, documented with **Storybook**.
+A framework-agnostic design system extracted from the Creavue **“Join the Movement”** marketing website. It packages the brand’s **design tokens**, **CSS components**, and **self-hosted fonts** into an independent, reusable library.
 
 > Built to be consumed from any stack — vanilla HTML, React, Vue, Svelte — because it ships plain CSS custom properties and class-based components, not framework bindings.
+
+> 📖 **Looking for the live preview?** The Storybook documentation lives in its own
+> repo: **[creavue-storybook](https://github.com/levonsargsyan1990/creavue-storybook)**.
+> This repository is the *library only* — no build tooling, no framework deps.
 
 ---
 
@@ -11,33 +15,20 @@ A framework-agnostic design system extracted from the Creavue **“Join the Move
 - **Design tokens** — colors, gradients, dual themes (dark/light), typography, spacing, radii, shadows, motion — as CSS variables (`tokens.css`), plus machine-readable `tokens.json` and a JS export (`tokens.js`).
 - **CSS components** — buttons, badges/eyebrows, cards, forms (inputs, selects, textareas, custom checkboxes), navigation pills, stats, contact rows, footer, and the signature animated glow field.
 - **Self-hosted fonts** — Hanken Grotesk (body) subsets. Space Grotesk (display) is loaded from Google Fonts.
-- **Storybook** — living documentation with theme switching (dark/light) and accessibility checks.
 
----
-
-## 🚀 Quick start
-
-### Prerequisites
-- Node.js **18+**
-- npm **9+**
-
-### Install & run Storybook
-```bash
-npm install
-npm run storybook      # opens http://localhost:6006
-```
-
-### Build a static Storybook
-```bash
-npm run build-storybook   # outputs ./storybook-static
-```
+This is a **zero-dependency, no-build** package — just CSS, tokens, and fonts.
 
 ---
 
 ## 📦 Using the design system in a project
 
 ### 1. Everything at once
-Import the bundle, which pulls in fonts, tokens, base styles, and all components:
+Import the bundle, which pulls in fonts, tokens, base styles, and all components.
+Via a bundler you can use the bare package specifier (resolves to `index.css`):
+```css
+@import "join-the-movement-design-system";
+```
+…or the explicit path (also exported):
 ```css
 @import "join-the-movement-design-system/src/styles/index.css";
 ```
@@ -83,13 +74,15 @@ join-the-movement-design-system/
 │   ├── components/    # one CSS module per component family
 │   ├── fonts/         # self-hosted Hanken Grotesk woff2 subsets
 │   └── assets/        # brand logo + UI imagery
-├── .storybook/        # Storybook config (html-vite)
-├── stories/           # token + component stories
 ├── docs/              # contributing + usage notes
 ├── DESIGN_SYSTEM_AUDIT.md
 ├── package.json
 └── README.md
 ```
+
+> Storybook (config + stories) is **not** part of this repo — it lives in
+> [creavue-storybook](https://github.com/levonsargsyan1990/creavue-storybook),
+> which consumes this package as a Git dependency.
 
 ---
 
