@@ -1,0 +1,62 @@
+/* ============================================================
+   GLOW FIELD — ambient brand backdrop
+   .glowfield   fixed full-bleed layer (place first in <body>)
+   .orb .o1-o4  blurred, blend-mode color orbs
+   .veil        radial vignette fading to --bg
+   Drift animation runs only under html[data-motion="on"].
+   ============================================================ */
+
+.glowfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  mix-blend-mode: var(--glow-blend);
+  opacity: var(--glow-opacity);
+  will-change: transform;
+}
+.orb.o1 {
+  width: 62vw; height: 62vw; max-width: 760px; max-height: 760px;
+  top: -14vh; left: 50%; transform: translateX(-55%);
+  background: radial-gradient(circle at 50% 50%, var(--g1), transparent 66%);
+}
+.orb.o2 {
+  width: 48vw; height: 48vw; max-width: 620px; max-height: 620px;
+  top: 30vh; right: -12vw;
+  background: radial-gradient(circle at 50% 50%, var(--g3), transparent 66%);
+}
+.orb.o3 {
+  width: 52vw; height: 52vw; max-width: 640px; max-height: 640px;
+  top: 118vh; left: -14vw;
+  background: radial-gradient(circle at 50% 50%, var(--g-pink), transparent 68%);
+  opacity: calc(var(--glow-opacity) * .8);
+}
+.orb.o4 {
+  width: 46vw; height: 46vw; max-width: 560px; max-height: 560px;
+  top: 200vh; right: -8vw;
+  background: radial-gradient(circle at 50% 50%, var(--g2), transparent 66%);
+}
+
+html[data-motion="on"] .o1 { animation: drift1 22s ease-in-out infinite alternate; }
+html[data-motion="on"] .o2 { animation: drift2 26s ease-in-out infinite alternate; }
+html[data-motion="on"] .o3 { animation: drift1 30s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(-48%, 6%) scale(1.08); } }
+@keyframes drift2 { to { transform: translate(-6%, 5%) scale(1.1); } }
+@media (prefers-reduced-motion: reduce) { .orb { animation: none !important; } }
+
+.veil {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 80% at 50% -10%, transparent 40%, var(--bg) 100%);
+}
+
+/* Keep page content above the glow layer */
+main, .topbar, .footer { position: relative; z-index: 1; }

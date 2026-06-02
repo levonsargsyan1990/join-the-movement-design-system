@@ -1,0 +1,52 @@
+/* ============================================================
+   FOOTER
+   .footer / .footer-inner   centered footer column
+   .foot-tag                 tagline
+   .socials                  square social icon buttons
+   .foot-meta / .foot-copy   meta links + copyright
+   ============================================================ */
+
+.footer {
+  margin-top: var(--sec-gap);
+  border-top: 1px solid var(--hairline);
+  padding: 48px 0 60px;
+}
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+  text-align: center;
+}
+.footer .brand b { font-size: 1.3rem; }
+.foot-tag { color: var(--text-muted); font-size: .95rem; max-width: 34ch; }
+
+.socials { display: flex; gap: 10px; }
+.socials a {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .82rem;
+  transition: border-color .25s, transform .25s;
+}
+.socials a:hover { border-color: var(--card-border-hover); transform: translateY(-2px); }
+
+.foot-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  color: var(--text-faint);
+  font-size: .82rem;
+}
+.foot-meta a { color: var(--text-muted); text-decoration: none; }
+.foot-meta a:hover { color: var(--text); }
+.foot-copy { color: var(--text-faint); font-size: .78rem; letter-spacing: .04em; }

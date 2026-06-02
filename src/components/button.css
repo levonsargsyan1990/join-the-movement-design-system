@@ -1,0 +1,49 @@
+/* ============================================================
+   BUTTONS
+   .btn               base pill button (display font)
+   .btn-primary       CTA — uses --cta-bg (lime or gradient)
+   .btn-ghost         secondary / outline on glassy card bg
+   .btn-arrow         trailing arrow that nudges on hover
+   ============================================================ */
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 15px 26px;
+  border-radius: 99px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform .25s, box-shadow .25s, background .25s, border-color .25s;
+  min-height: 52px;
+}
+
+.btn-primary {
+  color: var(--cta-ink);
+  background: var(--cta-bg);
+  box-shadow: 0 14px 40px -14px var(--cta-glow);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 54px -14px var(--cta-glow);
+  filter: brightness(1.04);
+}
+
+.btn-ghost {
+  color: var(--text);
+  background: var(--card-bg);
+  border-color: var(--card-border);
+  backdrop-filter: blur(8px);
+}
+.btn-ghost:hover {
+  border-color: var(--card-border-hover);
+  transform: translateY(-2px);
+}
+
+.btn-arrow { transition: transform .25s; }
+.btn:hover .btn-arrow { transform: translateX(3px); }

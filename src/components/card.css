@@ -1,0 +1,124 @@
+/* ============================================================
+   CARDS
+   .who-grid / .who-card   selectable persona cards with a
+                           gradient border-on-hover (mask trick)
+   .why-grid / .why-card   feature cards with a gradient icon tile
+   ============================================================ */
+
+/* ---------- WHO CARDS ---------- */
+.who-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: clamp(36px, 7vw, 56px);
+}
+
+.who-card {
+  position: relative;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform .3s cubic-bezier(.2, .7, .2, 1), border-color .3s, background .3s;
+  -webkit-tap-highlight-color: transparent;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+/* gradient ring on hover via mask compositing */
+.who-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--grad);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.who-card:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  background: var(--card-bg-2);
+}
+.who-card:hover::after { opacity: 1; }
+.who-card:active { transform: translateY(-1px) scale(.995); }
+
+.who-num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: .8rem;
+  color: var(--text-faint);
+  letter-spacing: .08em;
+}
+.who-card h3 {
+  font-size: 1.46rem;
+  margin-top: 12px;
+  line-height: 1.1;
+  color: var(--text);
+}
+.who-card p {
+  color: var(--text-muted);
+  font-size: .97rem;
+  margin-top: 10px;
+  max-width: 34ch;
+}
+
+.who-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .92rem;
+  color: var(--text);
+}
+.who-link .arr { transition: transform .25s; }
+.who-card:hover .who-link .arr { transform: translateX(4px); }
+.who-link .arr svg { display: block; }
+
+/* ---------- WHY CARDS ---------- */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: clamp(36px, 7vw, 56px);
+}
+
+.why-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.why-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--grad);
+  box-shadow: 0 12px 30px -12px var(--g2);
+}
+.why-icon svg { width: 24px; height: 24px; stroke: #fff; fill: none; stroke-width: 1.7; }
+.why-card h3 { font-size: 1.4rem; margin-top: 20px; }
+.why-card p { color: var(--text-muted); margin-top: 10px; font-size: 1rem; }
+
+/* ---------- Responsive grids ---------- */
+@media (min-width: 760px) {
+  .who-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .why-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+}
+@media (min-width: 1040px) {
+  .who-card { padding: 32px 30px; }
+}

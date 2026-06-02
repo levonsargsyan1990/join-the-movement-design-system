@@ -1,0 +1,38 @@
+/* ============================================================
+   STAT BAR
+   .statbar   horizontal wrap of stats
+   .stat      single metric; .stat b = gradient value, span = label
+   ============================================================ */
+
+.statbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 30px;
+  margin: 46px auto 0;
+  max-width: 520px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+}
+.stat b {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  letter-spacing: -.04em;
+  background: linear-gradient(120deg, var(--g1), var(--g3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.stat span {
+  font-size: .78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-top: 2px;
+}
