@@ -1,0 +1,51 @@
+{
+  "name": "join-the-movement-design-system",
+  "version": "0.1.0",
+  "description": "Framework-agnostic design system extracted from the Creavue \"Join the Movement\" website — design tokens, CSS components, fonts, and a Storybook reference.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Creavue",
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "css",
+    "storybook",
+    "creavue",
+    "join-the-movement"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levonsargsyan1990/join-the-movement-design-system.git"
+  },
+  "main": "src/styles/index.css",
+  "style": "src/styles/index.css",
+  "exports": {
+    ".": "./src/styles/index.css",
+    "./tokens.css": "./src/tokens/tokens.css",
+    "./tokens.json": "./src/tokens/tokens.json",
+    "./tokens.js": "./src/tokens/tokens.js",
+    "./fonts.css": "./src/styles/fonts.css",
+    "./css/*": "./src/components/*"
+  },
+  "files": [
+    "src",
+    "DESIGN_SYSTEM_AUDIT.md",
+    "README.md"
+  ],
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "build": "storybook build",
+    "tokens:check": "node scripts/check-tokens.mjs"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.14",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-themes": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/html": "^8.6.14",
+    "@storybook/html-vite": "^8.6.14",
+    "storybook": "^8.6.14",
+    "vite": "^5.4.11"
+  }
+}
